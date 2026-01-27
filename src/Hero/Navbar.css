@@ -1,0 +1,153 @@
+/* RESET & BASE */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR WRAPPER */
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.6rem 2rem;
+}
+
+/* PROMO BAR */
+.navbar__promo {
+  width: 100%;
+  background: #fdf2e9;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.navbar__promo-text {
+  text-align: center;
+  flex: 1;
+  margin: 0 1rem;
+  color: #000;
+}
+
+/* MAIN NAV */
+.navbar__main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* HAMBURGER */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.line {
+  width: 2.4rem;
+  height: 0.3rem;
+  background: #000;
+  transition: all 0.3s ease;
+}
+
+.open1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.open2 {
+  opacity: 0;
+}
+.open3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* MENU */
+.navbar__menu {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.navbar__menu li a:hover {
+  opacity: 0.8;
+}
+
+/* LOGO */
+.navbar__logo {
+  font-size: 2.4rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+
+/* ICONS */
+.navbar__icons {
+  display: flex;
+  gap: 2rem;
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 900px) {
+
+  /* SHOW HAMBURGER */
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* MENU HIDDEN BY DEFAULT */
+  .navbar__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    gap: 1.8rem;
+    background: #120d0d;
+    padding: 2rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* MENU ACTIVE */
+  .navbar__menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+    box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+}

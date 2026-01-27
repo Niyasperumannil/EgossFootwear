@@ -1,0 +1,37 @@
+@import "./AdminProducts.css";
+
+/* Orders specific */
+.orders-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.orders-table th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status.success {
+  color: #16a34a;
+}
+
+.status.pending {
+  color: #d97706;
+}

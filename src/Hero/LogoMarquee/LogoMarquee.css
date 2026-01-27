@@ -1,0 +1,124 @@
+/* GLOBAL RESET + BASE */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+  color: #000;
+  background: #fff;
+}
+
+/* SECTION TITLE */
+.logo-marquee-section {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.logo-marquee-title {
+  text-align: center;
+ font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: normal;
+color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+  color: #111;
+}
+
+/* MARQUEE WRAPPER */
+.logo-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* MARQUEE ANIMATION */
+@keyframes marqueeAnim {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeAnim 20s linear infinite;
+}
+
+/* LOGO ITEMS */
+.logo-marquee-item {
+  flex: 0 0 auto;
+  width: 100px; /* exact desktop width */
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-marquee-item img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1280px) {
+  .logo-marquee-item {
+    width: 220px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-marquee-title {
+    font-size: 1.8rem;
+  }
+  .logo-marquee-item {
+    width: 200px;
+    margin-right: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-marquee-title {
+    font-size: 1.6rem;
+  }
+  .logo-marquee-item {
+    width: 160px;
+    margin-right: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-marquee-title {
+    font-size: 1.4rem;
+  }
+  .logo-marquee-item {
+    width: 140px;
+    margin-right: 20px;
+  }
+}
+
+/* OPTIONAL: Reduce animation duration on small devices */
+@media (max-width: 768px) {
+  .logo-marquee {
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-marquee {
+    animation-duration: 12s;
+  }
+}

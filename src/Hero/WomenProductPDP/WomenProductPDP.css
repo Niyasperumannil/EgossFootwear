@@ -1,0 +1,179 @@
+/* ===============================
+   PAGE WRAPPER
+================================ */
+.women-product-page {
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.women-product-container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 4rem;
+}
+
+/* ===============================
+   LEFT IMAGE SECTION
+================================ */
+.women-product-image {
+  width: 55%;
+}
+
+.women-product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* THUMBNAILS */
+.women-thumb-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.women-thumb-row img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+/* ===============================
+   RIGHT CONTENT
+================================ */
+.women-product-info {
+  width: 45%;
+}
+
+.women-product-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.14rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.women-product-sku {
+  font-size: 0.75rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.women-product-price {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.women-product-note {
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+   OPTIONS
+================================ */
+.women-option-block {
+  margin-bottom: 1.5rem;
+}
+
+.women-option-title {
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+/* SIZE */
+.women-size-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.women-size-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.women-size-btn.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/* ===============================
+   QUANTITY
+================================ */
+.women-quantity-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: 120px;
+  height: 42px;
+  margin-bottom: 1.5rem;
+}
+
+.women-quantity-box button {
+  width: 40px;
+  height: 100%;
+  font-size: 1.2rem;
+}
+
+.women-quantity-box span {
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================ */
+.women-add-cart {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #111;
+  background: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.12rem;
+  margin-bottom: 0.8rem;
+}
+
+.women-buy-now {
+  width: 100%;
+  height: 52px;
+  background: #111;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.12rem;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .women-product-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .women-product-image,
+  .women-product-info {
+    width: 100%;
+  }
+
+  .women-product-title {
+    font-size: 1.2rem;
+  }
+
+  .women-thumb-row img {
+    width: 56px;
+    height: 56px;
+  }
+}

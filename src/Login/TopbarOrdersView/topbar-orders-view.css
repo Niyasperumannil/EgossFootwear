@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* HEADER */
+.tbov-header-shell {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.tbov-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tbov-header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.tbov-brand-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.tbov-nav-links {
+  display: flex;
+}
+
+.tbov-link-item {
+  margin-right: 1.5rem;
+  font-size: 1rem;
+}
+
+.tbov-link-active {
+  text-decoration: underline;
+}
+
+/* PROFILE */
+.tbov-header-right {
+  position: relative;
+}
+
+.tbov-profile-trigger {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: #f2f2f2;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
+.tbov-profile-dropdown {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  width: 260px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  z-index: 10;
+}
+
+.tbov-profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.tbov-profile-email {
+  font-size: 0.9rem;
+}
+
+.tbov-profile-action {
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.tbov-profile-action:hover {
+  opacity: 0.7;
+}
+
+.tbov-logout-action {
+  font-weight: 500;
+}
+
+/* ORDERS */
+.tbov-orders-shell {
+  width: 100%;
+}
+
+.tbov-orders-container {
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+}
+
+.tbov-orders-heading {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.tbov-orders-emptybox {
+  width: 100%;
+  height: 240px;
+  background: #f7f7f7;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tbov-empty-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.tbov-empty-subtitle {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .tbov-nav-links {
+    display: none;
+  }
+
+  .tbov-orders-container {
+    margin-top: 1.5rem;
+  }
+
+  .tbov-orders-emptybox {
+    height: 200px;
+  }
+}

@@ -1,0 +1,154 @@
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #000;
+}
+
+/* SECTION */
+.watch-section {
+  width: 100%;
+  padding: 5rem 4%;
+}
+
+/* TITLE */
+.watch-title {
+  text-align: center;
+  font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: normal;
+color: rgb(17, 17, 17);
+  margin-bottom: 4rem;
+}
+
+/* ROW (HORIZONTAL SCROLL) */
+.watch-row {
+  display: flex;
+  gap: 2.4rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.watch-row::-webkit-scrollbar {
+  height: 0.6rem;
+}
+
+.watch-row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 1rem;
+}
+
+/* CARD */
+.watch-card {
+  flex: 0 0 22%;
+  scroll-snap-align: start;
+}
+
+/* VIDEO */
+.video-wrapper {
+  width: 100%;
+  height: 42rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.watch-card:hover video {
+  transform: scale(1.05);
+}
+
+/* TEXT */
+.product-name {
+  margin-top: 1.4rem;
+  font-size: 1.4rem;
+}
+
+.price-row {
+  margin-top: 0.6rem;
+  font-size: 1.5rem;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.old {
+  margin-left: 0.8rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* OFFER */
+.offer {
+  display: inline-block;
+  margin-top: 0.6rem;
+  background: #1a8f3a;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+}
+
+/* DESKTOP EFFECT */
+@media (min-width: 1024px) {
+  .watch-card {
+    transition: transform 0.3s ease;
+  }
+
+  .watch-card:hover {
+    transform: translateY(-0.6rem);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .watch-card {
+    flex: 0 0 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .watch-card {
+    flex: 0 0 60%;
+  }
+
+  .video-wrapper {
+    height: 38rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .watch-title {
+    font-size: 2.4rem;
+  }
+
+  .watch-card {
+    flex: 0 0 80%;
+  }
+
+  .video-wrapper {
+    height: 34rem;
+  }
+}

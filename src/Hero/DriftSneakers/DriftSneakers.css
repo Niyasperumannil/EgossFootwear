@@ -1,0 +1,153 @@
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
+}
+
+/* SECTION */
+.drift-section {
+  width: 100%;
+  padding: 6rem 4%;
+  text-align: center;
+}
+
+/* HEADINGS */
+.drift-subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.drift-title {
+font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: normal;
+color: rgb(17, 17, 17);
+  margin-bottom: 5rem;
+}
+
+/* GRID */
+.drift-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+/* CARD */
+.drift-card {
+  width: 23%;
+  position: relative;
+}
+
+.drift-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* SALE */
+.sale-badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  background: #ff0000;
+  color: #ffffff;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+}
+
+/* TEXT */
+.product-name {
+  margin-top: 1.6rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.15rem;
+}
+
+.price {
+  margin-top: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.price .new {
+  color: #e60000;
+  font-weight: 600;
+  margin-left: 0.4rem;
+}
+
+.price .old {
+  margin-left: 0.8rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* COLOR DOT */
+.color-dot {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  margin: 1.6rem auto 0;
+  border: 0.2rem solid #000;
+}
+
+.color-dot.brown {
+  background: #8b5a2b;
+}
+.color-dot.black {
+  background: #000;
+}
+.color-dot.grey {
+  background: #777;
+}
+.color-dot.tan {
+  background: #c68b59;
+}
+
+/* VIEW ALL */
+.view-all {
+  margin-top: 5rem;
+  padding: 1.2rem 3.5rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.25rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .drift-grid {
+    flex-wrap: wrap;
+  }
+
+  .drift-card {
+    width: 48%;
+  }
+}
+
+@media (max-width: 600px) {
+  .drift-title {
+    font-size: 2.4rem;
+  }
+
+  .drift-card {
+    width: 100%;
+  }
+}

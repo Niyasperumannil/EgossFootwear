@@ -1,0 +1,97 @@
+/* GLOBAL RESET + BASE */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+}
+
+/* CONTAINER */
+.carousel-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 2rem 1.5rem;
+}
+
+/* SCROLL TRACK */
+.carousel-scroll {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  align-items: center;
+  padding-bottom: 1rem;
+    margin-left: 12rem;
+
+}
+
+/* ITEM */
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 13rem;
+  flex-shrink: 0;
+}
+
+/* CIRCLE IMAGE */
+.circle-image {
+  width: 9.6rem;  /* 96px */
+  height: 9.6rem; /* 96px */
+  border-radius: 50%;
+  padding: 0.4rem;
+  border: 0.4rem solid #a43f94; /* gradient-style border */
+  background: #fff;
+  overflow: hidden;
+}
+
+.circle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* LABEL */
+.carousel-label {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* MOBILE RESPONSIVE (SMALL) */
+@media (max-width: 768px) {
+ .carousel-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 2rem 1.5rem;
+  margin-left: -1rem;
+}
+
+  .carousel-item {
+    width: 11rem;
+  }
+
+  .circle-image {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .carousel-label {
+    font-size: 1.2rem;
+  }
+}

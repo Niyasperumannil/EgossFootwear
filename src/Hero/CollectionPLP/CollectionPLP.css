@@ -1,0 +1,221 @@
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #000;
+}
+
+/* PAGE */
+.plp {
+  width: 100%;
+  padding: 2.5rem 3%;
+}
+
+/* TOP BAR */
+.plp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid #e5e5e5;
+}
+
+.plp-views span {
+  font-size: 1.6rem;
+  margin-right: 1.4rem;
+  cursor: pointer;
+}
+
+.plp-count {
+  font-size: 1.3rem;
+  letter-spacing: 0.2rem;
+}
+
+.plp-sort {
+  font-size: 1.3rem;
+  padding: 0.6rem 1rem;
+  border: 0.1rem solid #ddd;
+}
+
+/* BODY */
+.plp-body {
+  display: flex;
+  margin-top: 3rem;
+}
+
+/* FILTERS */
+.plp-filters {
+  width: 18%;
+  padding-right: 3rem;
+}
+
+.filter-block {
+  margin-bottom: 3rem;
+}
+
+.filter-block h4 {
+  font-size: 1.3rem;
+  letter-spacing: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-block ul {
+  list-style: none;
+}
+
+.filter-block ul li {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #555;
+  cursor: pointer;
+}
+
+/* PRICE */
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* COLORS */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.c {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.3rem;
+  border: 0.1rem solid #ccc;
+}
+
+.white { background: #f7f7e8; }
+.black { background: #000; }
+.blue { background: #0026ff; }
+.red { background: #b30000; }
+.cream { background: #fffbe8; }
+.olive { background: #8a8f00; }
+
+/* GRID */
+.plp-grid {
+  width: 82%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3rem;
+}
+
+.plp-card {
+  position: relative;
+  background: #f2f2f2;
+}
+
+.plp-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* SAVE BADGE */
+.save {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #e00000;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.4rem 0.8rem;
+}
+/* keep existing styles exactly as-is */
+
+/* ADD ONLY THIS BELOW */
+.plp-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* optional: smooth hover feel without layout change */
+.plp-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plp-card:hover {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1280px) {
+  .plp-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .plp-filters {
+    width: 25%;
+  }
+
+  .plp-grid {
+    width: 75%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .plp-body {
+    flex-direction: column;
+  }
+
+  .plp-filters {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    padding-right: 0;
+  }
+
+  .filter-block {
+    width: 33%;
+  }
+
+  .plp-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .plp-top {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .plp-filters {
+    flex-direction: column;
+  }
+
+  .filter-block {
+    width: 100%;
+  }
+
+  .plp-grid {
+    grid-template-columns: 1fr;
+  }
+}

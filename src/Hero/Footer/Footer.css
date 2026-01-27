@@ -1,0 +1,179 @@
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* FEATURES STRIP */
+.footer-features {
+  width: 100%;
+  padding: 4rem 6%;
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  text-align: center;
+}
+
+.feature {
+  width: 22%;
+}
+
+.feature .icon {
+  font-size: 2.6rem;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.feature h4 {
+font-family: Arial, sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: normal;
+color: rgb(0, 0, 0);
+  margin-bottom: 1rem;
+}
+
+.feature p {
+ font-family: Arial, sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: normal;
+color: rgb(0, 0, 0);
+}
+
+/* MAIN FOOTER */
+.footer {
+  width: 100%;
+  background: #1c1c1c;
+  color: #ffffff;
+  padding: 6rem 6% 2.5rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* COLUMNS */
+.footer-col {
+  width: 30%;
+}
+
+.footer-col h5 {
+  font-family: Arial, sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: normal;
+color: rgb(255, 255, 255);
+  margin-bottom: 2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  color: #cccccc;
+  cursor: pointer;
+}
+
+/* SOCIALS */
+.socials {
+  display: flex;
+  gap: 1.6rem;
+  margin-top: 3rem;
+  font-size: 1.6rem;
+}
+
+.country {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* NEWSLETTER */
+.newsletter p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.newsletter input {
+  width: 100%;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  outline: none;
+}
+
+.newsletter button {
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.25rem;
+  background: #ffffff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .footer-features {
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .feature {
+    width: 48%;
+  }
+
+  .footer-content {
+    flex-wrap: wrap;
+    gap: 4rem;
+  }
+
+  .footer-col {
+    width: 48%;
+  }
+}
+
+@media (max-width: 600px) {
+  .feature,
+  .footer-col {
+    width: 100%;
+  }
+
+  .footer-features {
+    padding: 4rem 4%;
+  }
+
+  .footer {
+    padding: 5rem 4% 2rem;
+  }
+
+  .footer-bottom {
+    font-size: 1rem;
+  }
+}
