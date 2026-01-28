@@ -8,7 +8,7 @@ An end-to-end online shopping platform for men’s & women’s shoes with OTP em
 
 
 
----
+
 
 ## 🚀 Technologies Used
 React | Redux | Node.js | Express.js | MongoDB | Razorpay | Nodemailer | JWT | REST API | CSS/Bootstrap
