@@ -114,7 +114,7 @@ export default function WomenCollectionPLP() {
           {/* FILTER SIDEBAR */}
           <aside className="wplp-filters">
 
-            <div className="filter">
+            {/* <div className="filter">
               <h4>SIZE</h4>
               <ul>
                 {[34,35,36,37,38,39,40,41,42].map((s) => (
@@ -135,7 +135,7 @@ export default function WomenCollectionPLP() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             <div className="filter">
               <h4>PRICE</h4>

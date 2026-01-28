@@ -113,7 +113,7 @@ export default function CollectionPLP() {
         <div className="plp-body">
           {/* FILTERS */}
           <aside className="plp-filters">
-            <div className="filter-block">
+            {/* <div className="filter-block">
               <h4>SIZE</h4>
               <ul>
                 {[5,6,7,8,9,10,11,12,13,14,15,16].map((s) => (
@@ -134,7 +134,7 @@ export default function CollectionPLP() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             <div className="filter-block">
               <h4>PRICE</h4>
