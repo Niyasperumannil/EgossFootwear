@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import "./CartModal.css";
+
+// ✅ PAYMENT API
+const PAYMENT_API = "https://egoss.onrender.com/api/payment";
 
 const CartModal = ({ open, onClose, cartItem }) => {
   const [cart, setCart] = useState([]);
@@ -39,6 +43,81 @@ const CartModal = ({ open, onClose, cartItem }) => {
     (sum, item) => sum + item.price * item.qty,
     0
   );
+
+  // ================= LOAD RAZORPAY =================
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  // ================= CHECKOUT HANDLER =================
+  const handleCheckout = async () => {
+    const loaded = await loadRazorpay();
+    if (!loaded) {
+      alert("Razorpay SDK failed to load");
+      return;
+    }
+
+    try {
+      // 1️⃣ Create order in backend with CART TOTAL
+      const orderRes = await axios.post(
+        `${PAYMENT_API}/create-order`,
+        { amount: total }
+      );
+
+      const { razorpayOrder } = orderRes.data;
+
+      // 2️⃣ Open Razorpay Checkout
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount: razorpayOrder.amount,
+        currency: "INR",
+        name: "Egoss Store",
+        description: "Cart Checkout",
+        order_id: razorpayOrder.id,
+
+        handler: async function (response) {
+          try {
+            // 3️⃣ Verify payment
+            const verifyRes = await axios.post(
+              `${PAYMENT_API}/verify-payment`,
+              {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }
+            );
+
+            if (verifyRes.data.success) {
+              alert("✅ Payment Successful");
+
+              // 🔥 Clear cart after success
+              localStorage.removeItem(cartKey);
+              setCart([]);
+              onClose();
+            }
+          } catch (err) {
+            alert("❌ Payment verification failed");
+          }
+        },
+
+        theme: {
+          color: "#000000",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
+    }
+  };
 
   return (
     <div className="cart-overlay">
@@ -148,7 +227,8 @@ const CartModal = ({ open, onClose, cartItem }) => {
             <b>₹{total}</b>
           </div>
 
-          <button className="checkout-btn">
+          {/* 🔥 CHECKOUT */}
+          <button className="checkout-btn" onClick={handleCheckout}>
             CHECKOUT
           </button>
 
