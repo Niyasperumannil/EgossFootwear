@@ -3,11 +3,10 @@
 An end-to-end online shopping platform for men’s & women’s shoes with OTP email verification and Razorpay payment integration.
 
 ## 📂 Project Structure
-📌 Frontend → `/frontend` (React, Redux, CSS/Bootstrap)  
-📌 Backend → `/backend` (Node.js, Express, MongoDB, JWT)
+📌 Frontend → `/frontend` (React, Redux, CSS/Bootstrap)  https://github.com/Niyasperumannil/EgossFootwear
+📌 Backend → `/backend` (Node.js, Express, MongoDB, JWT) https://github.com/Niyasperumannil/Egoss
 
-## 🔗 Repository
-https://github.com/your_username/complete-shoe-store
+
 
 ---
 
