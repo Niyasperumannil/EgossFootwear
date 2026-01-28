@@ -53,9 +53,9 @@ export default function Navbar() {
   const handleUserClick = () => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/Orders");
+      navigate("/orders");
     } else {
-      navigate("/Login");
+      navigate("/login");
     }
   };
 
@@ -89,14 +89,14 @@ export default function Navbar() {
 
           {/* MENU */}
           <ul className={`navbar__menu ${menuOpen ? "active" : ""}`}>
-            <li><a href="/Men">MEN</a></li>
-            <li><a href="/Women">WOMEN</a></li>
-            <li><a href="/Men">LAFATTIO</a></li>
-            <li><a href="/Women">ASPEERIO</a></li>
-            <li><a href="/Men">NEW YEAR SALE</a></li>
-            <li><a href="/Women">GST SAVINGS SALE</a></li>
-            <li><a href="/Men">STORES</a></li>
-            <li><a href="/Women">EXCHANGE SUPPORT</a></li>
+            <li><a href="/men">MEN</a></li>
+            <li><a href="/women">WOMEN</a></li>
+            <li><a href="/men">LAFATTIO</a></li>
+            <li><a href="/women">ASPEERIO</a></li>
+            <li><a href="/men">NEW YEAR SALE</a></li>
+            <li><a href="/women">GST SAVINGS SALE</a></li>
+            <li><a href="/men">STORES</a></li>
+            <li><a href="/women">EXCHANGE SUPPORT</a></li>
           </ul>
 
           {/* LOGO */}

@@ -5,7 +5,7 @@ import Navbar from "../Hero/Navbar";
 
 /**
  * ============================
- * API BASE URL (HARD CODED)
+ * API BASE URL
  * ============================
  */
 const API_URL = "https://egoss.onrender.com";
@@ -34,18 +34,15 @@ const Auth = () => {
     setMessage("");
 
     try {
-      const res = await fetch(
-        `${API_URL}/api/auth/send-otp`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.trim(),
-          }),
-        }
-      );
+      const res = await fetch(`${API_URL}/api/auth/send-otp`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+        }),
+      });
 
       const data = await res.json();
 
@@ -79,19 +76,16 @@ const Auth = () => {
     setMessage("");
 
     try {
-      const res = await fetch(
-        `${API_URL}/api/auth/verify-otp`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.trim(),
-            otp: otp.trim(),
-          }),
-        }
-      );
+      const res = await fetch(`${API_URL}/api/auth/verify-otp`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          otp: otp.trim(),
+        }),
+      });
 
       const data = await res.json();
 
@@ -106,9 +100,9 @@ const Auth = () => {
 
       setMessage("Login successful ✅");
 
-      // ✅ REDIRECT
+      // ✅ REDIRECT (LOWERCASE ROUTE)
       setTimeout(() => {
-        navigate("/Orders");
+        navigate("/orders");
       }, 1000);
     } catch (error) {
       console.error(error);
