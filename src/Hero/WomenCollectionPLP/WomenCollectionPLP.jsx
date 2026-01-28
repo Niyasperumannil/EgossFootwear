@@ -9,6 +9,13 @@ const API_URL = "https://egoss.onrender.com/api/products";
 
 export default function WomenCollectionPLP() {
   const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+
+  // FILTER STATES
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [price, setPrice] = useState(3599);
+  const [sort, setSort] = useState("Featured");
 
   // ================= FETCH WOMEN PRODUCTS =================
   useEffect(() => {
@@ -22,6 +29,7 @@ export default function WomenCollectionPLP() {
         );
 
         setProducts(womenProducts);
+        setFiltered(womenProducts);
       } catch (error) {
         console.error("Failed to fetch women products");
       }
@@ -29,6 +37,44 @@ export default function WomenCollectionPLP() {
 
     fetchProducts();
   }, []);
+
+  // ================= APPLY FILTERS =================
+  useEffect(() => {
+    let temp = [...products];
+
+    // SIZE FILTER
+    if (selectedSize) {
+      temp = temp.filter((p) =>
+        p.sizes?.includes(selectedSize)
+      );
+    }
+
+    // COLOR FILTER
+    if (selectedColor) {
+      temp = temp.filter(
+        (p) => p.color === selectedColor
+      );
+    }
+
+    // PRICE FILTER
+    temp = temp.filter((p) => p.price <= price);
+
+    // SORT
+    if (sort === "Price, low to high") {
+      temp.sort((a, b) => a.price - b.price);
+    }
+    if (sort === "Price, high to low") {
+      temp.sort((a, b) => b.price - a.price);
+    }
+    if (sort === "Alphabetically, A-Z") {
+      temp.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    if (sort === "Alphabetically, Z-A") {
+      temp.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    setFiltered(temp);
+  }, [products, selectedSize, selectedColor, price, sort]);
 
   return (
     <>
@@ -44,10 +90,14 @@ export default function WomenCollectionPLP() {
           </div>
 
           <p className="wplp-count">
-            {products.length} PRODUCTS
+            {filtered.length} PRODUCTS
           </p>
 
-          <select className="wplp-sort">
+          <select
+            className="wplp-sort"
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+          >
             <option>Featured</option>
             <option>Best selling</option>
             <option>Alphabetically, A-Z</option>
@@ -67,15 +117,23 @@ export default function WomenCollectionPLP() {
             <div className="filter">
               <h4>SIZE</h4>
               <ul>
-                <li>34 (1)</li>
-                <li>35 (35)</li>
-                <li>36 (58)</li>
-                <li>37 (58)</li>
-                <li>38 (58)</li>
-                <li>39 (58)</li>
-                <li>40 (58)</li>
-                <li>41 (57)</li>
-                <li>42 (49)</li>
+                {[34,35,36,37,38,39,40,41,42].map((s) => (
+                  <li
+                    key={s}
+                    onClick={() =>
+                      setSelectedSize(
+                        selectedSize === s ? null : s
+                      )
+                    }
+                    style={{
+                      cursor: "pointer",
+                      fontWeight:
+                        selectedSize === s ? "700" : "400",
+                    }}
+                  >
+                    {s}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -83,22 +141,49 @@ export default function WomenCollectionPLP() {
               <h4>PRICE</h4>
               <div className="price-values">
                 <span>₹ 0</span>
-                <span>₹ 3599</span>
+                <span>₹ {price}</span>
               </div>
-              <input type="range" />
+              <input
+                type="range"
+                min="0"
+                max="3599"
+                value={price}
+                onChange={(e) =>
+                  setPrice(Number(e.target.value))
+                }
+              />
             </div>
 
             <div className="filter">
               <h4>COLOR</h4>
               <div className="colors">
-                <span className="c beige"></span>
-                <span className="c cream"></span>
-                <span className="c black"></span>
-                <span className="c navy"></span>
-                <span className="c blue"></span>
-                <span className="c red"></span>
-                <span className="c yellow"></span>
-                <span className="c maroon"></span>
+                {[
+                  "beige",
+                  "cream",
+                  "black",
+                  "navy",
+                  "blue",
+                  "red",
+                  "yellow",
+                  "maroon",
+                ].map((c) => (
+                  <span
+                    key={c}
+                    className={`c ${c}`}
+                    onClick={() =>
+                      setSelectedColor(
+                        selectedColor === c ? null : c
+                      )
+                    }
+                    style={{
+                      outline:
+                        selectedColor === c
+                          ? "2px solid #000"
+                          : "none",
+                      cursor: "pointer",
+                    }}
+                  ></span>
+                ))}
               </div>
             </div>
 
@@ -106,7 +191,7 @@ export default function WomenCollectionPLP() {
 
           {/* PRODUCTS GRID */}
           <div className="wplp-grid">
-            {products.map((p) => (
+            {filtered.map((p) => (
               <Link
                 key={p._id}
                 to={`/women-product/${p._id}`}
@@ -114,10 +199,11 @@ export default function WomenCollectionPLP() {
               >
                 <div className="wplp-card">
                   {p.stock < 10 && (
-                    <span className="save">LOW STOCK</span>
+                    <span className="save">
+                      LOW STOCK
+                    </span>
                   )}
 
-                  {/* ✅ Updated image URL */}
                   <img
                     src={`https://egoss.onrender.com${p.images[0]}`}
                     alt={p.name}

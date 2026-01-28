@@ -9,6 +9,13 @@ const API_URL = "https://egoss.onrender.com/api/products";
 
 export default function CollectionPLP() {
   const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+
+  // FILTER STATES
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [price, setPrice] = useState(13999);
+  const [sort, setSort] = useState("Featured");
 
   // ================= FETCH PRODUCTS =================
   useEffect(() => {
@@ -22,6 +29,7 @@ export default function CollectionPLP() {
         );
 
         setProducts(menProducts);
+        setFiltered(menProducts);
       } catch (error) {
         console.error("Failed to fetch products");
       }
@@ -29,6 +37,44 @@ export default function CollectionPLP() {
 
     fetchProducts();
   }, []);
+
+  // ================= APPLY FILTERS =================
+  useEffect(() => {
+    let temp = [...products];
+
+    // SIZE FILTER
+    if (selectedSize) {
+      temp = temp.filter((p) =>
+        p.sizes?.includes(selectedSize)
+      );
+    }
+
+    // COLOR FILTER
+    if (selectedColor) {
+      temp = temp.filter(
+        (p) => p.color === selectedColor
+      );
+    }
+
+    // PRICE FILTER
+    temp = temp.filter((p) => p.price <= price);
+
+    // SORT
+    if (sort === "Price, low to high") {
+      temp.sort((a, b) => a.price - b.price);
+    }
+    if (sort === "Price, high to low") {
+      temp.sort((a, b) => b.price - a.price);
+    }
+    if (sort === "Alphabetically, A-Z") {
+      temp.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    if (sort === "Alphabetically, Z-A") {
+      temp.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    setFiltered(temp);
+  }, [products, selectedSize, selectedColor, price, sort]);
 
   return (
     <>
@@ -44,10 +90,14 @@ export default function CollectionPLP() {
           </div>
 
           <p className="plp-count">
-            {products.length} PRODUCTS
+            {filtered.length} PRODUCTS
           </p>
 
-          <select className="plp-sort">
+          <select
+            className="plp-sort"
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+          >
             <option>Featured</option>
             <option>Best selling</option>
             <option>Alphabetically, A-Z</option>
@@ -66,18 +116,23 @@ export default function CollectionPLP() {
             <div className="filter-block">
               <h4>SIZE</h4>
               <ul>
-                <li>5 (17)</li>
-                <li>6 (108)</li>
-                <li>7 (112)</li>
-                <li>8 (113)</li>
-                <li>9 (114)</li>
-                <li>10 (112)</li>
-                <li>11 (110)</li>
-                <li>12 (28)</li>
-                <li>13 (29)</li>
-                <li>14 (27)</li>
-                <li>15 (27)</li>
-                <li>16 (27)</li>
+                {[5,6,7,8,9,10,11,12,13,14,15,16].map((s) => (
+                  <li
+                    key={s}
+                    onClick={() =>
+                      setSelectedSize(
+                        selectedSize === s ? null : s
+                      )
+                    }
+                    style={{
+                      cursor: "pointer",
+                      fontWeight:
+                        selectedSize === s ? "700" : "400",
+                    }}
+                  >
+                    {s}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -85,27 +140,49 @@ export default function CollectionPLP() {
               <h4>PRICE</h4>
               <div className="price-range">
                 <span>₹ 0</span>
-                <span>₹ 13999</span>
+                <span>₹ {price}</span>
               </div>
-              <input type="range" />
+              <input
+                type="range"
+                min="0"
+                max="13999"
+                value={price}
+                onChange={(e) =>
+                  setPrice(Number(e.target.value))
+                }
+              />
             </div>
 
             <div className="filter-block">
               <h4>COLOR</h4>
               <div className="color-grid">
-                <span className="c white"></span>
-                <span className="c black"></span>
-                <span className="c blue"></span>
-                <span className="c red"></span>
-                <span className="c cream"></span>
-                <span className="c olive"></span>
+                {["white","black","blue","red","cream","olive"].map(
+                  (c) => (
+                    <span
+                      key={c}
+                      className={`c ${c}`}
+                      onClick={() =>
+                        setSelectedColor(
+                          selectedColor === c ? null : c
+                        )
+                      }
+                      style={{
+                        outline:
+                          selectedColor === c
+                            ? "2px solid #000"
+                            : "none",
+                        cursor: "pointer",
+                      }}
+                    ></span>
+                  )
+                )}
               </div>
             </div>
           </aside>
 
           {/* PRODUCTS */}
           <div className="plp-grid">
-            {products.map((p) => (
+            {filtered.map((p) => (
               <Link
                 key={p._id}
                 to={`/product/${p._id}`}
@@ -113,10 +190,11 @@ export default function CollectionPLP() {
               >
                 <div className="plp-card">
                   {p.stock < 10 && (
-                    <span className="save">LOW STOCK</span>
+                    <span className="save">
+                      LOW STOCK
+                    </span>
                   )}
 
-                  {/* ✅ Updated image URL */}
                   <img
                     src={`https://egoss.onrender.com${p.images[0]}`}
                     alt={p.name}
